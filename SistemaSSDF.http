@@ -1,0 +1,6 @@
+@SistemaSSDF_HostAddress = http://localhost:5005
+
+GET {{SistemaSSDF_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
