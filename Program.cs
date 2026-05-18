@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using SistemaSSDF.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,7 @@ var builderconfig = builder.Configuration;
 /*
  * Definicion del Context
  */
-/*builder.Services.AddDbContext<>(options =>
+builder.Services.AddDbContext<AppDbContext>(options =>
     {
         var connectionString = builderconfig.GetConnectionString("DefaultConnection")
                                ?? throw new InvalidOperationException("ConnectionString no encontrado");
@@ -48,7 +49,7 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("TotalAccess", policy =>
         policy.RequireRole("Admin"));
-    options.AddPolicy("AccesoCliente", policy => 
+    options.AddPolicy("AccessClient", policy => 
         policy.RequireRole("Client"));
 });
 
